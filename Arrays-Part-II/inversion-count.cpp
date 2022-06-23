@@ -45,6 +45,6 @@ long long _mergesort(long long *arr,long long *temp,int low , int high)
 }
 long long getInversions(long long *arr, int n){
     // Write your  code here.
-    long long temp[n];
+    long long *temp = new long long[n];
     return _mergesort(arr,temp,0,n-1);
 }
