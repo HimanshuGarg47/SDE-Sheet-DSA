@@ -1,13 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std; 
+
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+
 // optimized solution 1
 int uniqueSubstrings(string input)
 {
-  unordered_set<int> uset;
+  unordered_set<int> uset;   // store elements from l........to...r which has no duplicate elements 
+  // if duplicate found in uset remove one by one until unique
+
   int l = 0, r = 0, n = input.length(), max_len = INT_MIN;
-  while (r < n)
+  while (r < n)         // 0 to n-1
   {
-    if (uset.find(input[r]) != uset.end())
+    if (uset.find(input[r]) != uset.end())  
       while (l < r && uset.find(input[r]) != uset.end())
       {
 
@@ -34,7 +40,7 @@ int uniqueSubstrings(string input)
     {
         if(umap.find(input[r]) != umap.end())
         {
-            l = max(umap[input[r]] + 1,l);  //IMP!! ele found is beyond l, we are not going to update, bcz we are not removing the previous left index who was duplicate
+            l = max(umap[input[r]] + 1,l);  //IMPORTANT!! ele found is beyond l, we are not going to update, bcz we are not removing the previous left index who was duplicate
         }
         
            umap[input[r]] = r;

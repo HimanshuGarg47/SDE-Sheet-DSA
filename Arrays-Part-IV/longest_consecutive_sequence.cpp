@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// https://leetcode.com/problems/longest-consecutive-sequence/
+
 int parent(unordered_set<int> &umap, int i)
 {
     if (umap.find(i + 1) == umap.end())

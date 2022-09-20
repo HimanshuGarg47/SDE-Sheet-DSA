@@ -44,6 +44,8 @@ public:
     }
 };
 
+
+
 Node<int> *sortTwoLists(Node<int> *first, Node<int> *second)
 {
     if (!first && !second)
@@ -97,3 +99,33 @@ Node<int> *sortTwoLists(Node<int> *first, Node<int> *second)
     return head;
     // Write your code here.
 }
+
+
+// 2 method || time complexity is same
+Node<int> *sortTwoLists(Node<int> *first, Node<int> *second)
+{
+    Node<int> *temp = new Node<int>(0);
+    Node<int> *res = temp;
+
+    while(first!=NULL && second!=NULL)
+    {
+        if(first->data < second->data)
+        {
+            temp->next = first;
+            temp = temp->next;
+            first = first->next;
+        }
+        else
+        {
+            temp->next = second;
+            temp = temp->next;
+            second = second->next;
+        }
+    }
+
+    if(first!=NULL)temp->next = first?first:second;
+    return res->next;
+
+
+}
+
